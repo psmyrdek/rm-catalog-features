@@ -5,6 +5,18 @@ tags:
 bucketBy: userId
 
 environments:
+  preview:
+    rules:
+      - key: "1"
+        segments: "*" # enabled for everyone in staging only
+        percentage: 100
+
+  development:
+    rules:
+      - key: "1"
+        segments: "*" # enabled for everyone in staging only
+        percentage: 100
+
   staging:
     rules:
       - key: "1"
