@@ -22,6 +22,8 @@ resource "aws_cloudfront_distribution" "ofe_cdn_distribution" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = aws_s3_bucket.ofe_bucket.id
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.ofe_cdn_distribution_cors.id
+
     forwarded_values {
       query_string = false
 
@@ -50,5 +52,28 @@ resource "aws_cloudfront_distribution" "ofe_cdn_distribution" {
 
   viewer_certificate {
     cloudfront_default_certificate = true
+  }
+}
+
+resource "aws_cloudfront_response_headers_policy" "ofe_cdn_distribution_cors" {
+  name    = "cors-policy"
+  comment = "CORS Policy for OFE CDN Distribution"
+
+  cors_config {
+    access_control_allow_credentials = false
+
+    access_control_allow_headers {
+      items = ["*"]
+    }
+
+    access_control_allow_methods {
+      items = ["GET"]
+    }
+
+    access_control_allow_origins {
+      items = ["*"]
+    }
+
+    origin_override = true
   }
 }

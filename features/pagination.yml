@@ -1,4 +1,4 @@
-description: Show cookie banner to users from the Netherlands
+description: Show pagination on characters list page
 tags:
   - all
 
@@ -8,26 +8,26 @@ environments:
   preview:
     rules:
       - key: "1"
-        segments: "*" # enabled for everyone in staging only
+        segments: "*"
         percentage: 100
 
   development:
     rules:
       - key: "1"
-        segments: "*" # enabled for everyone in staging only
+        segments: "*"
         percentage: 100
 
   staging:
     rules:
       - key: "1"
-        segments: "*" # enabled for everyone in staging only
+        segments: "*"
         percentage: 100
 
   production:
     rules:
       - key: "1"
         segments:
-          - netherlands # enabled in prod for NL only
+          - poland
         percentage: 100
 
       - key: "2"
