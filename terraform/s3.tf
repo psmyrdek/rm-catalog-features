@@ -43,3 +43,11 @@ resource "aws_s3_bucket_policy" "ofe_bucket_policy" {
     ]
   })
 }
+
+resource "aws_s3_bucket_website_configuration" "example_website_configuration" {
+  bucket = aws_s3_bucket.ofe_bucket.id
+
+  index_document {
+    suffix = "index.html"
+  }
+}
