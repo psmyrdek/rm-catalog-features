@@ -29,6 +29,9 @@ jobs:
       - name: Build datafiles
         run: npm run build
 
+      - name: Build static site
+        run: npm run export
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
@@ -37,7 +40,7 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy to AWS
-        run: aws s3 sync dist s3://ofe-rmcatalog-features
+        run: aws s3 sync out s3://ofe-rmcatalog-features
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DISTRIBUTION }} --path "/*"

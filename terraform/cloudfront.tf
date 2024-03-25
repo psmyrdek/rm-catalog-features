@@ -13,9 +13,8 @@ resource "aws_cloudfront_distribution" "ofe_cdn_distribution" {
     origin_id                = aws_s3_bucket.ofe_bucket.id
   }
 
-  enabled             = true
-  is_ipv6_enabled     = true
-  default_root_object = "index.html"
+  enabled         = true
+  is_ipv6_enabled = true
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
