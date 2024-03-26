@@ -29,9 +29,6 @@ jobs:
       - name: Build datafiles
         run: npm run build
 
-      - name: Build static site
-        run: npm run export
-
       - name: Git configs
         run: |
           git config user.name "${{ github.actor }}"
