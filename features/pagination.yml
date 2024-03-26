@@ -2,7 +2,7 @@ description: Show pagination on characters list page
 tags:
   - all
 
-bucketBy: userId
+bucketBy: country
 
 environments:
   preview:
