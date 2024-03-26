@@ -1,4 +1,4 @@
-name: Deploy Features
+name: Build Datafiles
 
 on:
   workflow_dispatch:
