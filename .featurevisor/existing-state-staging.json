@@ -13,7 +13,7 @@
       "traffic": [
         {
           "key": "1",
-          "percentage": 100000,
+          "percentage": 0,
           "allocation": []
         }
       ]
