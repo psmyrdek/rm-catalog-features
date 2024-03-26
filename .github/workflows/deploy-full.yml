@@ -2,9 +2,6 @@ name: Deploy Features
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 
 jobs:
   deploy:
@@ -47,3 +44,14 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DISTRIBUTION }} --path "/*"
+
+      - name: Git configs
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Push back to origin
+        run: |
+          git add .featurevisor/*
+          git commit -m "[skip ci] Revision $(cat .featurevisor/REVISION)"
+          git push

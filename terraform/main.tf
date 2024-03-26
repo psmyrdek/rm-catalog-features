@@ -12,3 +12,9 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
 }
+
+module "features" {
+  source = "./modules/features"
+
+  features_bucket_name = "ofe-rmcatalog-features"
+}
